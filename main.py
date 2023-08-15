@@ -26,13 +26,13 @@ WIN_CONDITION = 500
 # Resources.
 FONT = pygame.font.SysFont("comicsans", 30)
 BACKGROUND = pygame.transform.scale(
-    pygame.image.load("images/background_1.png"), (WIDTH, HEIGHT)
+    pygame.image.load("assets/background_1.png"), (WIDTH, HEIGHT)
 )
 ARROW = pygame.transform.scale(
-    pygame.image.load("images/arrow_1.png"), (ARROW_WIDTH, ARROW_HEIGHT)
+    pygame.image.load("assets/arrow_1.png"), (ARROW_WIDTH, ARROW_HEIGHT)
 )
 PLAYER = pygame.transform.scale(
-    pygame.image.load("images/player_1.png"), (PLAYER_WIDTH, PLAYER_HEIGHT)
+    pygame.image.load("assets/player_1.png"), (PLAYER_WIDTH, PLAYER_HEIGHT)
 )
 
 # Set pygame window.
