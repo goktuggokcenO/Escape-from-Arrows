@@ -82,12 +82,20 @@ def main():
     # Game loop.
     while run:
         elapsed_time = time.time() - start_time
+        arrow_time += clock.tick(60)
 
         # Close the game.
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
                 break
+
+        # Character movement.
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_LEFT] and player.x - PLAYER_VELOCITY >= 0:
+            player.x -= PLAYER_VELOCITY
+        if keys[pygame.K_RIGHT] and player.x + PLAYER_VELOCITY + PLAYER_WIDTH <= WIDTH:
+            player.x += PLAYER_VELOCITY
 
         # Draw game frame.
         draw(player, elapsed_time, arrows)
