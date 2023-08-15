@@ -107,6 +107,16 @@ def main():
 
             arrow_time = 0
 
+        # Check collision.
+        for arrow in arrows[:]:
+            arrow.y += ARROW_VELOCITY
+            if arrow.y > HEIGHT:
+                arrows.remove(arrow)
+            elif arrow.y + ARROW_HEIGHT >= player.y and arrow.colliderect(player):
+                arrows.remove(arrow)
+                hit = True
+                break
+
         # Character movement.
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LEFT] and player.x - PLAYER_VELOCITY >= 0:
