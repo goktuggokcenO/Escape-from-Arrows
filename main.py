@@ -62,7 +62,38 @@ def draw(player, elapsed_time, arrows):
 
 # Main function.
 def main():
-    ...
+    run = True
+    clock = pygame.time.Clock()
+    start_time = time.time()
+    elapsed_time = 0
+    arrow_add_increment = 2000
+    arrow_time = 0
+    arrows = []
+    hit = False
+
+    # Create player.
+    player = pygame.Rect(
+        (WIDTH / 2) - (PLAYER_WIDTH / 2),  # X position.
+        HEIGHT - PLAYER_HEIGHT,  # Y position.
+        PLAYER_WIDTH,  # X scale.
+        PLAYER_HEIGHT,  # Y scale.
+    )
+
+    # Game loop.
+    while run:
+        elapsed_time = time.time() - start_time
+
+        # Close the game.
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                run = False
+                break
+
+        # Draw game frame.
+        draw(player, elapsed_time, arrows)
+
+    # Exit game when finished.
+    pygame.quit()
 
 
 # Check the file run directly or as a module.
