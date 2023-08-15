@@ -124,6 +124,34 @@ def main():
         if keys[pygame.K_RIGHT] and player.x + PLAYER_VELOCITY + PLAYER_WIDTH <= WIDTH:
             player.x += PLAYER_VELOCITY
 
+        # Game over screen.
+        if hit:
+            lost_text = FONT.render("You Lost!", 1, "purple")
+            WINDOW.blit(
+                lost_text,
+                (
+                    WIDTH / 2 - lost_text.get_width() / 2,
+                    HEIGHT / 2 - lost_text.get_height() / 2,
+                ),
+            )
+            pygame.display.update()
+            pygame.time.delay(3000)
+            break
+
+        # You win screen.
+        if arrow_add_increment == WIN_CONDITION:
+            win_text = FONT.render("You Win!", 1, "green")
+            WINDOW.blit(
+                win_text,
+                (
+                    WIDTH / 2 - win_text.get_width() / 2,
+                    HEIGHT / 2 - win_text.get_height() / 2,
+                ),
+            )
+            pygame.display.update()
+            pygame.time.delay(3000)
+            break
+
         # Draw game frame.
         draw(player, elapsed_time, arrows)
 
