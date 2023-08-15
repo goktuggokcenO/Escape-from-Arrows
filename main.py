@@ -90,6 +90,23 @@ def main():
                 run = False
                 break
 
+        # Create arrows.
+        if arrow_time > arrow_add_increment:
+            for _ in range(3):
+                arrow_x = random.randint(0, WIDTH - ARROW_WIDTH)
+                arrow = pygame.Rect(
+                    arrow_x,  # X position.
+                    -ARROW_HEIGHT,  # Y position.
+                    ARROW_WIDTH,  # X scale.
+                    ARROW_HEIGHT,  # Y scale.
+                )
+                arrows.append(arrow)
+
+            # Make the next vave harder.
+            arrow_add_increment = max(WIN_CONDITION, arrow_add_increment - 50)
+
+            arrow_time = 0
+
         # Character movement.
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LEFT] and player.x - PLAYER_VELOCITY >= 0:
